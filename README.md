@@ -1,70 +1,90 @@
-# Getting Started with Create React App
+--------------ESLINT--------------
+|Popular linter for Javascript
+|Linting keeps code style consistent(for multiple engineers on project)
+-Linter:analyzes static text and marks syntax that breaks rules
+-Static:analyze code as written, not what happens when code is run
+-Linting also catches errors in code
+|using variable before defining
+|importing from non existing file
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+------Linting vs Formating----------
+Formatters(like prettier) automatically format code(indents, spacing)
+-example:spaces around curly braces
+import {useEffect} from 'react'; into import { useEffect } from 'react';
 
-## Available Scripts
+LInters address format and style
+-example:preferred assertion method
 
-In the project directory, you can run:
+expect(checkbox).tohaveAttribute(checked);
+into
+expect(checkbox).toBeChecked();
 
-### `npm start`
+|ESLint Plugins
+Testing Library and jest-dom ESLint plugins
+-Enforce best practices
+https://github.com/testing-library/eslint-plugin-testing-library
+https://github.com/testing-library/eslint-plugin-jest-dom
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+-------------------COURSE2: Sundaes on demand----------------
+Customers can do:
+|Choose icecream flavors and toppings and submit order
+|Flavors and toppings comes from server
+|Order is sent to server
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+Backdrop to Test:
+|more comples user interactions:mutiple form entry, moving through order phases
+|mouseover popup: test that element disappears from DOM
+|simulating server response: mock service worker
+|async app updates: awaiting DOM changes
+|global state via context
 
-### `npm test`
+Order Phase State(App-Level)
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+inProgress-Review-completed-inProgress
 
-### `npm run build`
+HOW ARE WE GOING TO SIMULATE MOUSEOVER?
+DO WE USE FIREEVENT? BETTER USE USEREVENT
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+|UserEvent
+-is much more efficient for interactions that is much more related to the user experience itself
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+screen Query Methods
+command[All]ByQueryType
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+these command are:
+get: expect element to be in DOM
+query: expect element not to be in DOM
+find: expect element to appear async
 
-### `npm run eject`
+[All]
+_(exclude) expect only one match
+_(include) expect mroe than one match
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+QueryType
+|Role(most preferred)
+|AltText(images)
+|Text(display elements)
+Form elements
+|PlaceholderText
+|LabelText
+|DisplayValue
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+SummaryForm Review
+*(review) testing flow where checkbox controls whether button is disabled
+*mouseover for terms and conditions
+|userEvent.hover and userEvent.unhover
+|queryByText to and expect () .not.toBeInTheDocument() for element starting out not on page
+where as query for specifically used to throw success if the element is not on page whereas
+getByText throws fail when that text isnot on page
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+|async waitForELementToBeRemoved for elemnt that was there and then disappearred
+*test not wrapped in act(...) warning
+*Determine howcomponent is getting updated async and account for in test
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+-------------------------OrderEntry-------------------------
+Objectives:
+|Test that option images render
+|Mock Service Worker
+|Mock server response for /scoops and /toppings
+|write "scoops" code together
+|"toppings" code as code quizz
