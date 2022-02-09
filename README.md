@@ -88,3 +88,30 @@ Objectives:
 |Mock server response for /scoops and /toppings
 |write "scoops" code together
 |"toppings" code as code quizz
+
+Mock Service Worker
+\*functional test dont involve with server
+
+Purpose
+|intercept network calls
+|return specified responses
+Prevents network calls during tests
+Set up test conditions user server response
+
+Setup and Requirements
+npm install msw
+1.Create handlers
+2.Create test server
+3.Make sure test server listens during all tests
+|reset after each test
+
+Steps:
+Handler Type: rest or graphql
+HTTP method to mock: get, post etc
+|Full URL to mock
+req:request object
+res:function to create response
+ctx:utility to build response
+
+SETTING UP:
+handlers.js ->server.js->src/setUpTest.js
