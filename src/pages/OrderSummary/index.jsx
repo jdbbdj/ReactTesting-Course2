@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
+import Options from "../entry/Options";
 const OrderSummary = () => {
   const [toBeChecked, setToBeChecked] = useState(false);
 
@@ -12,17 +13,7 @@ const OrderSummary = () => {
   return (
     <>
       <Form>
-        <Form.Group controlId="terms-and-conditions">
-          <Form.Check
-            type="checkbox"
-            checked={toBeChecked}
-            onChange={(e) => setToBeChecked(e.target.checked)}
-            label={checkBoxLabel}
-          />
-        </Form.Group>
-        <Button variant="primary" type="submit" disabled={!toBeChecked}>
-          Test Button
-        </Button>
+        <Options optionType="scoops" />
       </Form>
     </>
   );
