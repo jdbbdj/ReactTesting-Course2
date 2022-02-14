@@ -115,3 +115,22 @@ ctx:utility to build response
 
 SETTING UP:
 handlers.js ->server.js->src/setUpTest.js
+
+on the .test.jsx you will call the handler's api
+
+--------------Server Errors: Planning-----------------
+Fill in the catch statement of axios
+Display AlertBanner component if axios call throws error
+-instead of content from server
+|Use simple react-bootstrap alert
+role:alert
+By default, handlers return non-error response
+|Override with error response for particular tests
+
+Jest Debugging Tools
+
+Simulating Server Error Response in Tests(Isolate your test to debug easily failing test)
+Override Mock Service worker response for individual tests
+Isolate file by typing p in Jest watch mode
+Isolate test within file with test.only or test.skip
+waitFor for tests where await findBy isn't enough
